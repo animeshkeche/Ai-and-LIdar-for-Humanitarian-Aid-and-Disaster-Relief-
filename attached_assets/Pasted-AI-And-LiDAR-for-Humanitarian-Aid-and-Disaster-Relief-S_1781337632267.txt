@@ -1,0 +1,395 @@
+AI And LiDAR for Humanitarian Aid 
+and Disaster Relief 
+Smita Sitaram Wagh¹ᵃ, Animesh Manish Keche¹ᵇ, Onkar Kiranrao Pohanerkar¹ᶜ, Varun Anil 
+Chaudhari¹ᵈ, Avishkar Suresh Bhusare¹ᵉ 
+¹JSPM’s Jayawantrao Sawant College of Engineering, Pune, India 
+ᵃ waghsmita050@gmail.com 
+ᵇ animeshkeche0@gmail.com 
+ᶜ onkarpohanerkar14@gmail.com 
+ᵈ varunchaudhari4002@gmail.com 
+ᵉ avishkarbhusare@gmail.com 
+Abstract. Quick, precise awareness of what’s happening on the ground like spotting smoke curling over a flooded 
+street makes all the difference in a fast, effective disaster response. Traditional disaster assessments that rely on 
+manual surveys, satellite images, and drone cameras often respond too slowly, capture limited detail, and struggle 
+when visibility drops like trying to map a flooded street through thick fog. This paper introduces an AI-powered 
+LiDAR framework that delivers high-resolution damage assessments and guides decisions after disasters, 
+pinpointing cracks and debris with striking detail. The proposed method uses deep learning to process 3D LiDAR 
+point clouds, automatically spotting cracks or breaks, ranking how severe the damage is, and marking the spots that 
+rescuers should reach first. Tests on both benchmark and simulated datasets show that our method delivers higher 
+accuracy and faster results than traditional disaster assessment techniques, pinpointing damage almost instantly on a 
+live map. The results show that the proposed framework sharply boosts situational awareness, helping teams make 
+quick, well-informed decisions when chaos hits a map glowing on a screen can mean the difference between delay 
+and rescue. 
+Keywords: Artificial Intelligence · LiDAR · Disaster Damage Assessment · Humanitarian Disaster Response · 
+Deep Learning · Remote Sensing · Decision Support Systems. 
+1 INTRODUCTION 
+Earthquakes, floods, cyclones, landslides, and wildfires keep striking, taking lives, wrecking roads and 
+homes, and shaking economies across the world. Over the past few decades, these disasters have struck 
+harder and more often, pushing humanitarian groups and emergency teams to rush in with fast, effective 
+relief sometimes before the dust even settles [1, 2]. Humanitarian disaster response succeeds when teams 
+quickly understand what’s happening on the ground, gauge the extent of the damage like flooded roads 
+or collapsed roofs and get scarce supplies where they’re needed most. 
+Most traditional disaster assessments lean on hands-on field surveys, satellite maps streaked with cloud 
+cover, and reports gathered from the ground. Manual surveys may provide rich detail, but they’re slow, 
+exhausting work and in unstable post-disaster zones, even stepping over cracked concrete can be 
+dangerous [1]. Satellite imagery is now widely used to map large-scale damage, but it often falls short 
+clouds drift across the lens, updates come slowly, and fine cracks in collapsed roofs slip past its view [3, 
+4]. These limits often slow down decisions in the crucial first hours after disaster hits, when acting fast 
+sometimes within minutes can mean the difference between life and death. 
+Drones fitted with optical cameras now serve as a practical alternative to satellite monitoring, delivering 
+sharper, close-up imagery and collecting data in a fraction of the time [8]. Even with all their benefits, 
+camera-based UAVs still struggle when the light shifts, smoke thickens, or dust coats the air and debris 
+or fallen beams can easily block their view. Plus, flat two-dimensional images don’t capture depth, so 
+they fall short when it comes to judging real structural damage or subtle ground shifts after a disaster like 
+when a cracked bridge shadow hides the gap beneath it. 
+Method 
+Spatial 
+Resolution 
+Response 
+Time 
+Automation 
+Level 
+Manual Survey 
+Satellite 
+Imagery UAV 
+CameraBased 
+AI +LiDAR 
+Low Medium 
+Medium High 
+Very High 
+High 
+Medium 
+Low 
+Low Low 
+Medium High 
+Table 1. Comparison of Disaster Assessment Approaches. 
+New advances in digital tech and AI are reshaping disaster response and humanitarian efforts think 
+drones skimming over flooded streets, sending back live maps that guide rescuers in real time [3, 5]. 
+More researchers now rely on AI systems to forecast disasters, assess damage, manage logistics, and 
+guide relief work like mapping washed-out roads after a heavy storm. Machine learning especially deep 
+learning has proven remarkably good at tackling huge, messy datasets and uncovering hidden patterns, 
+much like catching a faint pulse of light in a noisy sensor feed, to steer automated decisions [6, 7]. 
+Studies show AI-powered systems can dramatically speed up how teams react and understand a crisis, 
+beating old disaster assessment methods for example; mapping a flood’s spread in seconds instead of 
+minutes [11]. 
+LiDAR, short for Light Detection and Ranging, has rapidly become a standout sensing tool, especially 
+for disaster assessment its quick laser pulses can trace 
+flood damage with crisp precision, down to the curve of a washed-out road. LiDAR maps terrain and 
+buildings in crisp 3D detail, cutting through smoke, dust, or even the dark like a beam slicing fog. Fixed 
+to drones or rolling ground rigs, LiDAR sensors swiftly collect dense point [21]. cloud data that reveal 
+changes in terrain, twisted beams, and bits of debris catching sharp flashes of sunlight. Previous studies 
+found LiDAR data highly effective for identifying collapsed buildings, locating blocked roads, and 
+helping crews chart disaster zones for example, tracing rubble-strewn streets after an earthquake [22, 
+23]. 
+Still, raw LiDAR point‑cloud data packs millions of tiny points like silver dust outlining every ridge and 
+it demands serious computing muscle to sift through manually. This momentum’s driven researchers to 
+fuse AI with LiDAR scans, streamlining how damage gets detected and analyzed almost like following 
+hairline cracks along a scanned bridge deck. Deep learning models especially convolutional neural 
+networks (CNNs) have shown remarkable skill in spotting distinctive patterns in LiDAR point clouds, 
+such as the sharp edges of buildings or the rough silhouettes of trees, to support classification and 
+segmentation tasks [24,25]. This kind of integration instantly gauges how bad the damage is like 
+noticing a crack spidering across glass and helps teams size up the situation far faster than any manual 
+check or rigid set of rules. 
+When AI steps into humanitarian work, it stirs tough questions moral and logistical about how people 
+and machines can push forward side by side through the grit, the rush, and the aching pulse of need. A 
+wealth of studies stress that AI in disaster response has to remain open and accountable, backed by 
+strong data protection and guided by people like a small crew kneeling beside a cracked sensor, brushing 
+off the dust to test it after an earthquake [9,13,16]. AI systems build trust and behave responsibly when 
+they follow humanitarian principles and respect human rights like a compass keeping a ship steady as 
+cold spray stings the deck. 
+Even with major advances in AI and LiDAR for disaster assessment, many systems still feel pieced 
+together slow to process data in real time and poorly linked to the decision tools that guide humanitarian 
+teams racing through dust and debris. Many methods still treat AI-driven image analysis and LiDAR 
+mapping as separate tracks, missing a single system that fuses sharp 3D sensing with smart interpretation 
+and real-world support [14,15]. This shows a clear gap in research on building integrated, AI-powered 
+LiDAR systems built for quick damage checks and faster humanitarian decisions like mapping collapsed 
+roofs moments after a storm. 
+This study tackles that gap by introducing an AI-powered, LiDAR-based system that quickly gauges 
+damage and speeds up humanitarian disaster reading the wreckage patterns left after a storm in seconds. 
+The approach uses 3D LiDAR point-cloud data and deep learning to spot structural damage, gauge how 
+severe it is, and flag the areas that most need rescue and relief like the twisted beams at a collapsed 
+bridge. By sharpening situational awareness faster, clearer, more precise the framework helps teams 
+make quicker calls and deliver lifesaving aid when it matters most, even amid the dust and noise of a 
+disaster zone. 
+1.1 Contributions 
+It introduces a single AI-LiDAR system that quickly assesses disaster damage by combining sensing, 
+analysis, and support for decisions. 
+It uses deep learning to classify and sort the severity of damage based on 3D point cloud data. 
+There's a smart preprocessing pipeline that cleans up LiDAR data— removing noise, normalizing, and 
+segmenting it efficiently. 
+The team put their approach to the test and showed that it’s both more accurate and faster than methods 
+relying on satellites or UAVs. 
+2 RELATED WORK 
+Over the past decade, researchers have dug into how digital tools reshape humanitarian aid and disaster 
+relief from mapping streets swallowed by floodwater to tracing families who vanish online. Early studies 
+found that information and communication technologies sharpened awareness, improved coordination, 
+and helped people make smarter calls in humanitarian crises for example, rescuers swapping fresh 
+satellite images just after a storm blew through. Meier [1] showed that new digital tools power crisis 
+mapping and fast information sharing, becoming the backbone of modern humanitarian systems like 
+faint lights flicking on across a dark map whenever someone calls for help. In major crises like the 
+COVID-19 pandemic digital platforms and data-driven tools proved their worth again, helping relief 
+teams coordinate with the speed of alerts flashing across a crowded screen [2]. 
+` As AI keeps pushing forward, researchers are exploring how it can bolster humanitarian efforts and 
+disaster relief for instance, sending drones to scan wrecked neighborhoods for survivors after a storm. 
+Precious and Eyakndue 
+[3] looked into how AI could take on tough jobs measuring storm damage, predicting what people might 
+need, and coordinating relief while Beduschi [4] examined both the hope and the hazards of bringing AI 
+into humanitarian work. Dubey and his team found that AI-powered big data analytics can greatly boost 
+agility and resilience in humanitarian supply chains, helping teams react faster and adjust on the fly like 
+rerouting trucks before a storm hits.[5] found that AI-powered big data tools sharply boost agility and 
+resilience in humanitarian supply chains, helping teams respond faster and adjust on the fly like 
+rerouting trucks within minutes after a sudden storm.[11] proposed AI-based systems for real-time 
+disaster prediction and relief management, demonstrating improvements in response efficiency. 
+Machine learning and deep learning sit at the heart of many AI-powered disaster systems, helping map 
+flooded streets and trace a storm’s twisting path as it unfolds. Singh and his team [6] analyzed popular 
+machine learning algorithms and how they’re built, while Li [7] showed how deep learning models can 
+spot patterns in images like picking out a bright red apple from a pile of green ones examined widely 
+used machine learning algorithms and how they’re put into practice, while Li [7] showed how deep 
+learning models excel at spotting objects in images like picking out a red car in traffic looked into 
+popular machine learning algorithms and how people actually use them, while Li [7] demonstrated that 
+deep learning models shine at recognizing objects in images like catching a red car weaving through 
+traffic. 
+Drones those quick, unmanned flyers have revolutionized disaster monitoring, sweeping over flooded 
+streets to capture live images no human could safely reach. Davila and her team [8] passed the lab’s cold 
+metal benches, their sleeves whispering against steel as they got ready to start. In their study, they 
+unveiled an open-source UAV system powered by AI that predicts and reacts to disasters as they unfold, 
+showing how drones and data tools can team up like a camera gliding over flooded streets to map danger 
+before it spreads. [8] introduced an open-source UAV system powered by AI that predicts and reacts to 
+disasters as they unfold, proving how drones and smart data can team up like a camera gliding above 
+flooded streets, tracing the rising water before it surges further. 
+People are watching closely how AI’s used in humanitarian work, especially when an algorithm chooses 
+who gets a warm meal or a dry blanket after a storm. Kreutzer and his team [9], joined by Beduschi [10] 
+and Starwin’s group [13], spread their notes across the table the faint scratch of pens marking their focus 
+as they examined how AI and personal data shape ethics in humanitarian crises, emphasizing open 
+communication, accountable choices, and the steady human judgment that watches each decision before 
+it’s made. 
+Lately, researchers have zeroed in on blending advanced sensors with AI to sharpen disaster assessments 
+tracking tremors, smoke, and shifting ground more precisely than ever. LiDAR, or Light Detection and 
+Ranging, has become a powerful way to capture crisp, high-resolution 3D views of landscapes and city 
+blocks, down to the curve of a rooftop or the edge of a hillside. Earlier research shows that LiDAR data 
+can spot collapsed buildings, trace shifts in the ground, and pinpoint blocked roads after a disaster like 
+seeing cracked asphalt and toppled walls from above [21–23]. Traditional LiDAR methods still depend 
+on people interpreting the data or rigid rule-based steps, so they 
+struggle to scale or deliver results fast enough for real-time use like a surveyor pausing every few meters 
+to double-check a map. 
+To tackle these limits, researchers have been blending deep learning methods with LiDAR point-cloud 
+data each pulse mapping terrain as sharply as a pin. Convolutional neural networks and similar models 
+have delivered strong results in pulling out useful features from intricate 3D data like the layered 
+structure of cracked concrete for tasks such as damage classification and segmentation [24,25]. Although 
+accuracy has improved, most studies still zero in on single parts of the disaster assessment process like 
+mapping flood zones after heavy rain without tying those pieces into the broader decision-support 
+systems that guide humanitarian work. 
+Even with piles of new research on AI, UAVs, and LiDAR for disaster response, a few stubborn gaps 
+still stand out like blind spots in a storm map. Many current systems still work on their own one 
+crunches AI image data while another maps with LiDAR yet none tie these parts together under a single, 
+unified design [14,15]. Second, handling high-resolution data is tough its sheer complexity makes real- 
+time processing and quick decision support a constant struggle, like trying to track every ripple on a 
+windy lake. Third, only a handful of studies tackle what humanitarian groups actually need connecting 
+automated damage assessments with clear, usable insights that guide rescue crews and relief planning on 
+the ground. 
+3 METHODOLOGY 
+This section presents an AI-powered LiDAR system built for rapid damage checks and swift, effective 
+disaster relief picture drones sweeping over broken rooftops, mapping the wreckage in minutes. This 
+approach gives teams a clear, high-resolution view of unfolding events and automatically gauges 
+damage, helping them make fast, informed choices while dust still hangs in the air after a disaster. The 
+method blends LiDAR 3D scans with deep learning to detect damage, measure its severity, and steer 
+decisions for instance, tracing the jagged edge of a cracked beam in crisp detail. 
+3.1 System Overview 
+The proposed AI-driven LiDAR system offers a flexible, end-to-end setup that speeds up damage 
+assessment, letting responders quickly map collapsed rooftops and scattered debris shattered tiles and all 
+within minutes after a quake. The system turns raw 3D LiDAR scans jagged piles of concrete and 
+tangled rebar from chaotic disaster zones into clear, usable insights that help emergency teams plan fast, 
+effective rescue and relief efforts. 
+The system works like a pipeline each module handles its task, then hands the result to the next, flowing 
+as smoothly as water pouring from one glass to another. Its modular design boosts scalability and 
+flexibility, letting it run smoothly whether it’s set up on a salty, wind-swept coast or tucked high in a still 
+mountain valley. 
+Fig. 1. Architecture of the proposed AI-driven LiDAR-based disaster damage assessment framework. 
+In the figure, the curve bends softly at its center a brief dip, like a ripple spreading across still water. The 
+system’s made up of five main parts: LiDAR sorts of damage this way, the models don’t just get one 
+kind of chaos, but several. 
+Sure, part of the dataset is synthetic. But honestly, that’s the norm in disaster management research. 
+There just aren’t enough annotated real-world LiDAR samples out there, The dataset is categorized into 
+low, moderate and divided into 70% training and 30% testing using stratified sampling. 
+Dataset 
+Type 
+Data 
+Source 
+Data 
+Format 
+Public 
+LiDAR 
+Dataset 
+Airborne 
+LiDAR 
+Benchmar 
+ks 
+3D Point 
+Cloud 
+(.las/. 
+ply) 
+No. of 
+Samples 
+500 
+0 
+Purpose 
+Baseline 
+Structur al 
+Mapping 
+Simulate 
+d 
+Disaster 
+Dataset 
+Synthetic 
+Damage 
+Modeling 
+3D Point 
+Cloud 
+(.las/. 
+ply) 
+500 
+0 
+Damage 
+Severity 
+Evaluati on 
+Table 2 . Summary of datasets used for experimental evaluation 
+The dataset includes both baseline and synthetically generated samples, enabling evaluation across 
+multiple damage severity levels. 
+Figure shows how the samples are spread across the damage severity classes used for training and testing 
+small cracks at one end and shattered edges at the other. 
+Fig.2. Distribution of samples across damage severity classes. 
+This setup ensures that the model is evaluated under controlled yet diverse conditions, improving the 
+reliability of experimental results. 
+3.2 Experimental Setup 
+The experimental evaluation was conducted in controlled environment using standard computational 
+resources. The AI-LiDAR framework in a controlled environment. This way, everything stayed fair and 
+we could repeat the process without any surprises. 
+We split the dataset—70% for training, 30% for testing. Stratified sampling kept all the different damage 
+types in both sets, so nothing got left out. The model got trained on the bigger chunk, then we tested it 
+with fresh data to see if it could handle brand new cases. 
+For classification, we used a Convolutional Neural Network. It ran through 50 training epochs with the 
+Adam optimizer and a learning rate of 0.001. If the validation loss stopped getting better, we cut training 
+short to avoid overfitting and save some time. 
+The dataset was divided into training (70%) and testing (30%) sets using stratified sampling., everything 
+was done in Python. We handled LiDAR data preprocessing with Open3D and NumPy, and kept the 
+whole setup on a regular lab machine. No fancy gear—just a normal computer anyone with access could 
+use. 
+To make sure our findings held up, we ran each experiment a few times. We tracked accuracy, precision, 
+recall, and F1-score to cover all the main performance  
+metrics. 
+And then, we took it one step further. We compared our model against baselines like satellite data and 
+UAV camera assessments, just to see how the AI-LiDAR system measured up in real disaster 
+scenarios. 
+Fig.2. Distribution of data used for training and testing. 
+3.3 Evaluation Metrics 
+We track the framework’s performance with metrics for accuracy, response time, and a few others that 
+show how smoothly it runs once the data rushes through like water in a clear glass tube. These metrics 
+often steer how we assess and classify disasters, giving a clear, full view of a system’s performance like 
+tracing every fracture in a broken wall to feel where it’s weakest. 
+Accuracy shows how often the system correctly identifies damage for example, catching the glint of a 
+cracked windshield in the sun. 
+Precision shows how reliable those predicted damage classes are it’s like pausing to make sure each 
+cracked beam gets tagged correctly before you step away. 
+Recall measures how sharply the system detects damaged spots for example, a thin crack cutting across 
+a strip of rusted metal. 
+The F1-score balances precision and recall, a scale so steady that even a grain of dust barely tips it. 
+Response Time tracks how fast the system delivers damage assessments like a report that pops up the 
+instant a photo finishes loading. 
+Together, these metrics measure the analysis’s accuracy and show how it holds up when time runs short 
+like hauling crates of medicine through knee-deep water on a frantic relief run. 
+3.4 Baseline Methods for Comparison 
+To show how well the proposed approach works, we compare its results with widely used disaster 
+assessment methods satellite image analysis and UAV camera surveys, like those capturing streets 
+coated in dust after a storm. These baseline methods reflect tried-and-true practices in disaster response 
+and serve as a solid benchmark like a steady compass for comparing new approaches. 
+4 RESULTS AND DISCUSSION 
+This section presents the experimental results from our AI-driven, LiDAR-based framework for 
+assessing disaster damage and compares its performance with current methods, highlighting how it 
+detects shattered rooftops faster than older systems. The evaluation focuses on how precisely it sorts 
+data, how consistently it forecasts results, and how fast it reacts vital details when aid trucks race down 
+flooded streets after a storm. 
+4.1 Quantitative Performance Analysis 
+We put the new AI-LiDAR framework through its paces, measuring accuracy, precision, recall, and F1- 
+score. It hit 89% accuracy—way ahead of satellite methods, which managed 71%, and UAV cameras at 
+78%. Precision and recall both jumped, so the model did a solid job handling all the damage categories 
+Method 
+Accurac 
+y (%) 
+Precision 
+(%) 
+Recall 
+(%) 
+F1-Score 
+(%) 
+Satellite-based 
+UAV Camera-based 
+AI + LiDAR 
+(Proposed) 
+71 
+78 
+69 
+76 
+68 
+75 
+68.5 
+75.5 
+89 
+88 
+90 
+Table 3. Performance comparison of disaster assessment methods 
+89 
+That boost mostly comes from LiDAR’s ability to grab 3D spatial data. It picks up elevation shifts and 
+geometric distortions a lot better than basic 2D images, which makes a huge difference for 
+classification. 
+Fig. 3. Confusion matrix of the proposed AI-LiDAR model showing classification performance across low, 
+moderate, and severe damage categories. 
+The confusion matrix shows that most predictions lie along the diagonal, indicating correct classification 
+of damage severity. Misclassifications are minimal and occur primarily between adjacent classes, such 
+as low to moderate and moderate to severe, which is expected due to the similarity between neighboring 
+damage levels. 
+4.2 Accuracy Comparison 
+The results make it clear: the AI-LiDAR framework handles accuracy better than both satellite and UAV 
+camera methods. What really boosts its performance is the way it uses 3D point cloud data. This gives 
+way more detailed info about structures than old-school 2D images ever could. 
+Fig.4. Accuracy comparison of disaster assessment methods. 
+4.3 Response Time Analysis 
+When it comes to response time, the new framework isn't just faster—it's a lot faster. Automated data 
+processing and model-driven classification cut down processing time, so disaster assessment and 
+decision-making happen quicker. That’s a big deal when every second counts. 
+Fig. 5. Response time comparison of disaster assessment methods. 
+4.4 Summary of Results 
+Overall, the results show that our AI-driven, LiDAR-based framework delivers greater accuracy, reliability, 
+and efficiency than current disaster assessment methods like spotting finer cracks in a collapsed bridge 
+before anyone else can. The results show that the proposed system can sharpen situational awareness like 
+spotting a supply truck before it’s too late and help people make quick, informed humanitarian decisions. 
+These results lay a solid groundwork for future efforts aimed at real-time deployment and large-scale field 
+testing think sensors humming in open fields as data rolls in live. 
+Overall, the proposed model demonstrates improved performance in terms of accuracy, speed, and reliability. 
+The model also maintains balanced performance across all damage classes, reducing both false positives and 
+false negatives. These results highlight the effectiveness of integrating AI with LiDAR for disaster damage 
+assessment. 
+CONCLUSION 
+This paper presents an AI-driven LiDAR system that rapidly gauges damage to aid disaster relief, tracing 
+collapsed rooftops and waterlogged streets within minutes. The proposed method blends crisp, 3-D LiDAR 
+scans with deep-learning tools to automatically detect structural damage, measure its severity, and guide 
+crews in making sound decisions as they inspect a cracked wall or tilted beam after a disaster. 
+Tests on standard LiDAR datasets and in simulated disaster zones showed our framework outperformed 
+traditional tools, surpassing both satellite imagery and camera-based UAV methods a clear edge, like 
+spotting fine cracks in rubble others missed. The results showed clearer classification, stronger precision and 
+recall, and faster reaction times a solid sign that combining LiDAR’s crisp 3D view with AI-powered 
+analysis heightens situational awareness, like seeing every ridge on a moving surface in real time. 
+Its modular design makes the system quick to scale and ready for anything— from salt-stung coastal floods 
+to wildfires racing through dry mountain pines, whatever the terrain. By reducing manual interpretation and 
+letting automation spot damage—say, a collapsed roof glinting in satellite photos— the framework could 
+make humanitarian disaster response faster and more reliable. The results look promising, but the study tests 
+performance only offline, using benchmark data and a handful of simulated runs that hum quietly on a lab 
+machine. 
+Next, we’ll turn to real-time work with UAV-mounted LiDAR, blending its scans with satellite imagery and 
+thermal feeds, then pushing the whole setup to scale in real disaster zones where dust clings and heat 
+shimmers in the air. Future research will explore ethics, data privacy, and ways to make models clearer so 
+they’re used responsibly in humanitarian work—like double-checking that no personal detail leaks through a 
+dusty spreadsheet. In short, the AI-driven LiDAR system gives teams a practical way to fine-tune disaster 
+damage assessments and make quick, data-backed calls sometimes while  
+dust   
+the    
+air. 
