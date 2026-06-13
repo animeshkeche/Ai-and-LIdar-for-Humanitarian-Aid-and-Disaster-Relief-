@@ -11,12 +11,14 @@ import {
   Satellite,
   AlertTriangle,
   Activity,
+  Radio,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useQuery } from "@tanstack/react-query";
 
 const navItems = [
   { href: "/", label: "Dashboard", icon: LayoutDashboard },
+  { href: "/lidar", label: "LiDAR System", icon: Radio },
   { href: "/assessment", label: "Damage Assessment", icon: ScanSearch },
   { href: "/alerts", label: "Alerts", icon: Bell },
   { href: "/analytics", label: "Analytics", icon: BarChart3 },

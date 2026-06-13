@@ -9,6 +9,7 @@ import Assessment from "@/pages/assessment";
 import AlertsPage from "@/pages/alerts";
 import Analytics from "@/pages/analytics";
 import MapView from "@/pages/map-view";
+import LidarPage from "@/pages/lidar";
 import Layout from "@/components/layout";
 
 function Router() {
@@ -20,6 +21,7 @@ function Router() {
         <Route path="/alerts" component={AlertsPage} />
         <Route path="/analytics" component={Analytics} />
         <Route path="/map" component={MapView} />
+        <Route path="/lidar" component={LidarPage} />
         <Route component={NotFound} />
       </Switch>
     </Layout>
