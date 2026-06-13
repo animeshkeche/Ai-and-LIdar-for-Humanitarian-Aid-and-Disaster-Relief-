@@ -12,25 +12,36 @@ import {
   AlertTriangle,
   Activity,
   Radio,
+  Brain,
+  Navigation,
+  Wifi,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useQuery } from "@tanstack/react-query";
+import { useRealtime } from "@/hooks/use-realtime";
 
 const navItems = [
-  { href: "/", label: "Dashboard", icon: LayoutDashboard },
-  { href: "/lidar", label: "LiDAR System", icon: Radio },
-  { href: "/assessment", label: "Damage Assessment", icon: ScanSearch },
-  { href: "/alerts", label: "Alerts", icon: Bell },
-  { href: "/analytics", label: "Analytics", icon: BarChart3 },
-  { href: "/map", label: "Map View", icon: Map },
+  { href: "/", label: "Dashboard", icon: LayoutDashboard, group: "Overview" },
+  { href: "/realtime", label: "Real-Time Monitor", icon: Activity, group: "Overview" },
+  { href: "/lidar", label: "LiDAR System", icon: Radio, group: "AI Processing" },
+  { href: "/pipeline", label: "CNN Pipeline", icon: Brain, group: "AI Processing" },
+  { href: "/assessment", label: "Damage Assessment", icon: ScanSearch, group: "Operations" },
+  { href: "/decision", label: "Decision Support", icon: Navigation, group: "Operations" },
+  { href: "/alerts", label: "Alerts", icon: Bell, group: "Operations" },
+  { href: "/analytics", label: "Analytics", icon: BarChart3, group: "Data" },
+  { href: "/map", label: "Map View", icon: Map, group: "Data" },
 ];
+
+const groups = ["Overview", "AI Processing", "Operations", "Data"];
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [location] = useLocation();
+  const { status: wsStatus } = useRealtime();
 
   const { data: stats } = useQuery<{ activeAlerts: number }>({
     queryKey: ["/api/stats"],
+    refetchInterval: 5000,
   });
 
   return (
@@ -57,6 +68,19 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         <div className="flex-1" />
 
         <div className="flex items-center gap-3">
+          {/* WebSocket status */}
+          <div className={cn(
+            "hidden sm:flex items-center gap-1.5 px-2.5 py-1 rounded-full border text-[10px] font-mono font-semibold",
+            wsStatus === "connected"
+              ? "bg-green-500/10 border-green-500/20 text-green-400"
+              : wsStatus === "connecting"
+              ? "bg-yellow-500/10 border-yellow-500/20 text-yellow-400 animate-pulse"
+              : "bg-slate-700/50 border-slate-600 text-slate-500"
+          )}>
+            <Wifi className="h-3 w-3" />
+            {wsStatus === "connected" ? "WS LIVE" : wsStatus === "connecting" ? "CONNECTING" : "OFFLINE"}
+          </div>
+
           <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-green-500/10 border border-green-500/20">
             <Activity className="h-3.5 w-3.5 text-green-400" />
             <span className="text-xs font-medium text-green-400">System Online</span>
@@ -94,38 +118,53 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         {/* Sidebar */}
         <aside
           className={cn(
-            "fixed top-16 left-0 bottom-0 z-40 w-64 bg-slate-900 border-r border-slate-700 flex flex-col transition-transform duration-200 lg:translate-x-0",
+            "fixed top-16 left-0 bottom-0 z-40 w-64 bg-slate-900 border-r border-slate-700 flex flex-col transition-transform duration-200 lg:translate-x-0 overflow-y-auto",
             sidebarOpen ? "translate-x-0" : "-translate-x-full"
           )}
         >
-          <nav className="flex-1 p-4 space-y-1">
-            {navItems.map(({ href, label, icon: Icon }) => {
-              const active = location === href;
+          <nav className="flex-1 p-3">
+            {groups.map((group) => {
+              const items = navItems.filter((n) => n.group === group);
               return (
-                <Link key={href} href={href}>
-                  <div
-                    className={cn(
-                      "flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors cursor-pointer",
-                      active
-                        ? "bg-blue-600 text-white"
-                        : "text-slate-400 hover:text-slate-100 hover:bg-slate-800"
-                    )}
-                    onClick={() => setSidebarOpen(false)}
-                  >
-                    <Icon className="h-4.5 w-4.5 flex-shrink-0" />
-                    {label}
-                    {label === "Alerts" && stats?.activeAlerts !== undefined && stats.activeAlerts > 0 && (
-                      <span className="ml-auto min-w-[20px] h-5 flex items-center justify-center bg-red-500 rounded-full text-[10px] font-bold text-white px-1">
-                        {stats.activeAlerts}
-                      </span>
-                    )}
+                <div key={group} className="mb-3">
+                  <div className="px-3 py-1 text-[10px] font-semibold uppercase tracking-widest text-slate-500">
+                    {group}
                   </div>
-                </Link>
+                  <div className="space-y-0.5">
+                    {items.map(({ href, label, icon: Icon }) => {
+                      const active = location === href;
+                      return (
+                        <Link key={href} href={href}>
+                          <div
+                            className={cn(
+                              "flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors cursor-pointer",
+                              active
+                                ? "bg-blue-600 text-white"
+                                : "text-slate-400 hover:text-slate-100 hover:bg-slate-800"
+                            )}
+                            onClick={() => setSidebarOpen(false)}
+                          >
+                            <Icon className="h-4 w-4 flex-shrink-0" />
+                            {label}
+                            {label === "Alerts" && stats?.activeAlerts !== undefined && stats.activeAlerts > 0 && (
+                              <span className="ml-auto min-w-[20px] h-5 flex items-center justify-center bg-red-500 rounded-full text-[10px] font-bold text-white px-1">
+                                {stats.activeAlerts}
+                              </span>
+                            )}
+                            {label === "Real-Time Monitor" && wsStatus === "connected" && (
+                              <span className="ml-auto w-2 h-2 rounded-full bg-green-400 animate-pulse" />
+                            )}
+                          </div>
+                        </Link>
+                      );
+                    })}
+                  </div>
+                </div>
               );
             })}
           </nav>
 
-          <div className="p-4 border-t border-slate-700">
+          <div className="p-3 border-t border-slate-700">
             <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-amber-500/10 border border-amber-500/20">
               <AlertTriangle className="h-4 w-4 text-amber-400 flex-shrink-0" />
               <div>

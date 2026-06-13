@@ -10,6 +10,9 @@ import AlertsPage from "@/pages/alerts";
 import Analytics from "@/pages/analytics";
 import MapView from "@/pages/map-view";
 import LidarPage from "@/pages/lidar";
+import RealtimePage from "@/pages/realtime";
+import PipelinePage from "@/pages/pipeline";
+import DecisionSupportPage from "@/pages/decision-support";
 import Layout from "@/components/layout";
 
 function Router() {
@@ -17,11 +20,14 @@ function Router() {
     <Layout>
       <Switch>
         <Route path="/" component={Dashboard} />
+        <Route path="/lidar" component={LidarPage} />
+        <Route path="/realtime" component={RealtimePage} />
+        <Route path="/pipeline" component={PipelinePage} />
+        <Route path="/decision" component={DecisionSupportPage} />
         <Route path="/assessment" component={Assessment} />
         <Route path="/alerts" component={AlertsPage} />
         <Route path="/analytics" component={Analytics} />
         <Route path="/map" component={MapView} />
-        <Route path="/lidar" component={LidarPage} />
         <Route component={NotFound} />
       </Switch>
     </Layout>
