@@ -1,0 +1,82 @@
+appId: com.aillidar.desktopapp
+productName: AI-LiDAR Disaster Assessment
+copyright: "Copyright © 2025 AI-LiDAR Research Team"
+buildVersion: "1.0.0"
+
+directories:
+  output: release
+  buildResources: electron/assets
+
+# What gets packaged into the app
+files:
+  - dist/**
+  - electron/main.cjs
+  - electron/preload.cjs
+  - electron/assets/**
+  - package.json
+
+# macOS
+mac:
+  category: public.app-category.utilities
+  icon: electron/assets/icon.png
+  target:
+    - target: dmg
+      arch: [x64, arm64]
+    - target: zip
+      arch: [x64, arm64]
+  darkModeSupport: true
+
+dmg:
+  title: "AI-LiDAR Disaster Assessment"
+  backgroundColor: "#070d18"
+  window:
+    width: 540
+    height: 380
+  contents:
+    - x: 140
+      y: 200
+    - x: 400
+      y: 200
+      type: link
+      path: /Applications
+
+# Windows
+win:
+  icon: electron/assets/icon.png
+  target:
+    - target: nsis
+      arch: [x64]
+    - target: portable
+      arch: [x64]
+
+nsis:
+  oneClick: false
+  perMachine: false
+  allowToChangeInstallationDirectory: true
+  createDesktopShortcut: true
+  createStartMenuShortcut: true
+  shortcutName: "AI-LiDAR"
+  installerHeaderIcon: electron/assets/icon.png
+  installerIcon: electron/assets/icon.png
+  uninstallerIcon: electron/assets/icon.png
+
+# Linux
+linux:
+  icon: electron/assets/icon.png
+  category: Science
+  target:
+    - target: AppImage
+      arch: [x64]
+    - target: deb
+      arch: [x64]
+  desktop:
+    Name: AI-LiDAR Disaster Assessment
+    Comment: AI+LiDAR based humanitarian disaster damage assessment platform
+    Keywords: LiDAR;AI;disaster;assessment;drone
+
+# Extra resources bundled into the app
+extraResources:
+  - from: dist/
+    to: app/dist/
+    filter:
+      - "**/*"
