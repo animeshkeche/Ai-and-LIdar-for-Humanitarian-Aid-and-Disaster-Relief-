@@ -1,0 +1,41 @@
+
+> rest-express@1.0.0 dev
+> NODE_ENV=development tsx server/index.ts
+
+[1G[0K8:34:11 AM [express] serving on port 5000
+
+A PostCSS plugin did not pass the `from` option to `postcss.parse`. This may cause imported assets to be incorrectly transformed. If you've recently added a PostCSS plugin that raised this warning, please contact the package author to fix the issue.
+8:34:20 AM [express] GET /api/stats 304 in 3ms :: {"totalAssessments":6,"activeAlerts":3,"severeArea…
+8:34:45 AM [express] GET /api/stats 304 in 0ms :: {"totalAssessments":6,"activeAlerts":3,"severeArea…
+8:34:48 AM [express] GET /api/assessments 200 in 1ms :: [{"id":"da5","location":"Wakad Sector","lati…
+8:34:48 AM [express] GET /api/stats 304 in 1ms :: {"totalAssessments":6,"activeAlerts":3,"severeArea…
+8:38:00 AM [express] GET /api/stats 304 in 0ms :: {"totalAssessments":6,"activeAlerts":3,"severeArea…
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m8:43:23 AM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/lidar-point-cloud.tsx, /src/index.css?v=Lt2-DlMrqPUH5yuS7FXwm[22m
+8:43:32 AM [express] GET /api/stats 304 in 2ms :: {"totalAssessments":6,"activeAlerts":3,"severeArea…
+8:43:45 AM [express] GET /api/stats 304 in 1ms :: {"totalAssessments":6,"activeAlerts":3,"severeArea…
+8:53:51 AM [express] GET /api/stats 200 in 0ms :: {"totalAssessments":6,"activeAlerts":3,"severeArea…
+8:53:51 AM [express] GET /api/assessments 200 in 0ms :: [{"id":"da5","location":"Wakad Sector","lati…
+8:53:51 AM [express] GET /api/alerts 200 in 1ms :: [{"id":"al4","title":"Wildfire Approach — Evacuat…
