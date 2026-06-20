@@ -1,0 +1,83 @@
+[33mcommit fa99e78870367cc029ef7f2d138623579be13812[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m
+Author: animeshkeche <animeshkeche@gmail.com>
+Date:   Sun Jun 14 11:56:17 2026 +0530
+
+    Integrate AI and LiDAR modules for disaster assessment
+
+[33mcommit 64f70788f0be58d7c6b0afa6ffb942bc86b2293a[m
+Author: animeshkeche <animeshkeche@gmail.com>
+Date:   Sun Jun 14 11:55:53 2026 +0530
+
+    Update gitignore rules for project cleanup
+
+[33mcommit e4cf5417662920052308a723ae72ba07f3865195[m
+Author: animeshkeche <animeshkeche@gmail.com>
+Date:   Sun Jun 14 11:55:36 2026 +0530
+
+    Add UI component configuration
+
+[33mcommit 381d08ae9e5c7dc4856d3f65913a90255d316708[m
+Author: animeshkeche <animeshkeche@gmail.com>
+Date:   Sun Jun 14 11:55:19 2026 +0530
+
+    Configure PostCSS processing pipeline
+
+[33mcommit f32ccc52bde83aedb38497991a53816b276130f3[m
+Author: animeshkeche <animeshkeche@gmail.com>
+Date:   Sun Jun 14 11:55:04 2026 +0530
+
+    Setup Drizzle ORM database configuration
+
+[33mcommit c73a5b322465406337524874cdcd665d8800e08c[m
+Author: animeshkeche <animeshkeche@gmail.com>
+Date:   Sun Jun 14 11:54:48 2026 +0530
+
+    Configure Tailwind CSS styling system
+
+[33mcommit ac3a5a294c92e339681adc23e83b61ef5ace3861[m
+Author: animeshkeche <animeshkeche@gmail.com>
+Date:   Sun Jun 14 11:54:31 2026 +0530
+
+    Setup Vite configuration for frontend build
+
+[33mcommit 9ceb8017ddc16a713407b48302dbf0e7e83a42b1[m
+Author: animeshkeche <animeshkeche@gmail.com>
+Date:   Sun Jun 14 11:54:18 2026 +0530
+
+    Configure TypeScript compiler settings
+
+[33mcommit bce1ecfc5702204bfa5bdbb2e8ef3c5e348b5cc7[m
+Author: animeshkeche <animeshkeche@gmail.com>
+Date:   Sun Jun 14 11:54:06 2026 +0530
+
+    Update project dependencies and package configuration
+
+[33mcommit 2935cbdc855cb2b7d5750ea8f3e6e27d2bc5e421[m
+Author: animeshkeche <animeshkeche@gmail.com>
+Date:   Sun Jun 14 11:53:53 2026 +0530
+
+    Add project assets and supporting resources
+
+[33mcommit d06b4ff4ff7197da8565ae2ee8e2eb386cc5be1d[m
+Author: animeshkeche <animeshkeche@gmail.com>
+Date:   Sun Jun 14 11:53:21 2026 +0530
+
+    Refactor shared utilities and configuration modules
+
+[33mcommit 4216b0a1f3d1e9603257cd2641776ee721dd4e92[m
+Author: animeshkeche <animeshkeche@gmail.com>
+Date:   Sun Jun 14 11:53:03 2026 +0530
+
+    Implement backend APIs for AI and LiDAR processing
+
+[33mcommit 1bf8dccb2cfdec2a20e3f5bd68c8584f0496e5f3[m
+Author: animeshkeche <animeshkeche@gmail.com>
+Date:   Sun Jun 14 11:52:44 2026 +0530
+
+    Develop frontend interface for disaster monitoring system
+
+[33mcommit 918f072ce6b76105bde8b6a1db83db742e9f2c0d[m
+Author: animeshkeche <animeshkeche@gmail.com>
+Date:   Sun Jun 14 11:51:56 2026 +0530
+
+    Initial commit
